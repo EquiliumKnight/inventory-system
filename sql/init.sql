@@ -9,7 +9,7 @@ CREATE TABLE "products" (
 
 CREATE TABLE "inventary" (
   "id" bigserial PRIMARY KEY,
-  "product_id" varchar,
+  "product_id" bigint,
   "store_id" varchar,
   "quantity" integer,
   "min_stock" integer
@@ -17,7 +17,7 @@ CREATE TABLE "inventary" (
 
 CREATE TABLE "moves" (
   "id" bigserial PRIMARY KEY,
-  "product_id" varchar,
+  "product_id" bigint,
   "source_store_id" varchar,
   "target_store_id" varchar,
   "quantity" integer,

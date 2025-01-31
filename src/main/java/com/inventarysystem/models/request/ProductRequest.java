@@ -28,6 +28,6 @@ public class ProductRequest {
     private BigDecimal price;
 
     @NotNull
-    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])[a-z\\d]{6}$")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])[a-z\\d]{6}$", flags = Pattern.Flag.CASE_INSENSITIVE)
     private String sku;
 }

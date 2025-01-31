@@ -42,10 +42,6 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Product updateProductById(Long id, ProductRequest request) {
-        if(repository.existsBySku(request.getSku())) {
-            throw new RuntimeException("El sku ingresado ya existe");
-        }
-
         Product product = findProductById(id);
         product.setCategory(request.getCategory());
         product.setName(request.getName());
@@ -72,9 +68,8 @@ public class ProductServiceImpl implements IProductService {
         return false;
     }
 
-    @Transactional
     @Override
     public Page<Product> paginationProducts(int page, int size, ProductFilter filter) {
-        return repository.findProductByFilters(filter.getCategory(), filter.getMin(), filter.getMax(), filter.getMinStock(), PageableUtil.getPageable(page, size));
+        return repository.findByFilters(filter.getCategory(), filter.getMin(), filter.getMax(), filter.getMinStock(), PageableUtil.getPageable(page, size));
     }
 }
